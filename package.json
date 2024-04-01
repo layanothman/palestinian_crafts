@@ -1,5 +1,5 @@
 {
-  "name": "palestinian_crafts",
+
   "version": "1.0.0",
   "description": "For Advanced software course",
   "main": "index.js",
@@ -10,12 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "express": "^4.19.1",
-    "jsonwebtoken": "^9.0.2",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.9.3",
-    "sequelize": "^6.37.2"
+
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
