@@ -40,38 +40,38 @@ class resourceModel {
 
 ////// add resourse
 
-// static async addResource(nresource_id,nresource_name, nresource_description,nprice,nquantity,nuid){
-//     try {
-//       const result = await new Promise((resolve, reject) => {
-//         db.query("SELECT `type` FROM `user` WHERE `uid`=?", [nuid], (error, result) => {
-//           if (error) {
-//             reject(error);
-//           } else {
-//             resolve(result);
-//           }
-//         });
-//       });
+static async addResource(nresource_id,nresource_name, nresource_description,nprice,nquantity,nuid){
+    try {
+      const result = await new Promise((resolve, reject) => {
+        db.query("SELECT `type` FROM `user` WHERE `uid`=?", [nuid], (error, result) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result);
+          }
+        });
+      });
   
-//       if (result && result.length > 0 && result[0].type === 1) {
-//         return new Promise((resolve) => {
-//           db.query("INSERT INTO `resource`('resource_id','resource_name', 'resource_description','price','quantity','uid') VALUES (?,?,?,?,?,?)",
-//             [nresource_id,nresource_name,nresource_description,nprice,nquantity,nuid], (error, result) => {
-//               if (!error) {
-//                 resolve(true);
-//               } else {
-//                 resolve(false);
-//               }
-//             });
-//         });
-//       } else {
-//         console.log("You can't add resource."); // Log the message if the user isn't authorized
-//         return false; // Indicate the failure to add resource due to unauthorized user
-//       }
-//     } catch (error) {
-//       console.error("Error:", error);
-//       return false; // Return false to indicate an error occurred
-//     }
-//   }
+      if (result && result.length > 0 && result[0].type === 1) {
+        return new Promise((resolve) => {
+          db.query("INSERT INTO `resource`('resource_id','resource_name', 'resource_description','price','quantity','uid') VALUES (?,?,?,?,?,?)",
+            [nresource_id,nresource_name,nresource_description,nprice,nquantity,nuid], (error, result) => {
+              if (!error) {
+                resolve(true);
+              } else {
+                resolve(false);
+              }
+            });
+        });
+      } else {
+        console.log("You can't add resource."); // Log the message if the user isn't authorized
+        return false; // Indicate the failure to add resource due to unauthorized user
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return false; // Return false to indicate an error occurred
+    }
+  }
 
   static async addresource(lresource_id,lresource_name, lresource_description,lprice,lquantity,luid)
   {
