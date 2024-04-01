@@ -46,6 +46,8 @@ function isValidPassword(password) {
 }
 
 
+const jwt = require('jsonwebtoken');
+
 authController.login = (req, res) => {
   const { email, password } = req.body;
 
@@ -76,10 +78,19 @@ authController.login = (req, res) => {
       }
 
       // Passwords match, user authenticated
-      return res.status(200).json({ message: 'Login successful', user });
+      // Generate token
+      const token = jwt.sign(
+        { userId: user.uid, email: user.email },
+        'your-secret-key', // Replace 'your-secret-key' with your actual secret key
+        { expiresIn: '1h' } // Token expires in 1 hour
+      );
+
+      // Return token along with user data
+      return res.status(200).json({ message: 'Login successful', token, user });
     });
   });
 };
+
 
 
 
