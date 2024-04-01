@@ -8,4 +8,5 @@ const db=mysql.createPool({
 db.getConnection(()=>{
 console.log('connected to db successfully');
 })
+//to export it to another folders
 module.exports=db;
