@@ -18,19 +18,41 @@ User.createUser = (userData, callback) => {
 };
 
 
-User.getUserByEmail = (email, callback) => {
-  const sql = 'SELECT * FROM user WHERE email = ?';
-  db.query(sql, [email], (err, rows) => {
-    if (err) {
-      return callback(err, null);
-    }
-    if (rows.length === 0) {
-      return callback(null, null); // User not found
-    }
-    const user = rows[0];
-    return callback(null, user);
-  });
+
+
+User.getUserType = (userId, callback) => {
+  const sql = 'SELECT type FROM user WHERE uid = ?';
+  const values = [userId];
+
+  if (callback && typeof callback === 'function') {
+    // If a callback function is provided, execute the query with callback-based approach
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        return callback(err, null);
+      }
+      if (result.length === 0) {
+        return callback(new Error('User not found'), null);
+      }
+      const userType = result[0].type;
+      return callback(null, userType);
+    });
+  } else {
+    // If no callback is provided, return a promise
+    return new Promise((resolve, reject) => {
+      db.query(sql, values, (err, result) => {
+        if (err) {
+          return reject(err);
+        }
+        if (result.length === 0) {
+          return reject(new Error('User not found'));
+        }
+        const userType = result[0].type;
+        return resolve(userType);
+      });
+    });
+  }
 };
+
 
 
 User.updateProfile = (userId, userData, callback) => {

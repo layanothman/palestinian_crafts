@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt'); // Import bcrypt library for password hashing
 const authController = {};
 
 authController.signup = (req, res) => {
-  const { username, email, password, location, interest } = req.body;
+  const { username, email, password, location, interest, type } = req.body; // Include 'type' here
 
   // Validate email address
   if (!validator.isEmail(email)) {
@@ -25,7 +25,7 @@ authController.signup = (req, res) => {
       return res.status(500).json({ error: 'Failed to create user. Please try again later.' });
     }
 
-    const userData = { username, email, password: hashedPassword, location, interest };
+    const userData = { username, email, password: hashedPassword, location, interest, type }; // Include 'type' here
     
     // Create user with hashed password
     User.createUser(userData, (err, result) => {
@@ -38,6 +38,7 @@ authController.signup = (req, res) => {
     });
   });
 };
+
 
 function isValidPassword(password) {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
