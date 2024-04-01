@@ -1,5 +1,5 @@
 {
-  "name": "palestinian_crafts-deema",
+
   "version": "1.0.0",
   "description": "For Advanced software course",
   "main": "index.js",
@@ -10,11 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.8",
-    "body-parser": "^1.20.2",
-    "express": "^4.19.2",
-    "mysql": "^2.18.1",
-    "nodeman": "^1.1.2"
+
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
