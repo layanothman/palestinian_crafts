@@ -1,4 +1,6 @@
 
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./Routes/authRoutes');
@@ -20,4 +22,5 @@ app.use('/api', authRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
