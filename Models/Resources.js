@@ -1,10 +1,6 @@
 const db=require('../Config/DB')
 class resourceModel {
-       
-
-
-
-  static async getresource()
+ static async getresource()
   {
       return new Promise(resolve =>
           {
@@ -19,26 +15,26 @@ class resourceModel {
           })
   }
 
-// static async getmyResource(topic){
-//   try {
-//     const result = await new Promise((resolve, reject) => {
-//       db.query("SELECT * FROM `resources` WHERE `topic`=?", [topic], (error, result) => {
-//         if (error) {
-//           reject(error);
-//         } else {
-//           resolve(result);
-//         }
-//       });
-//     });
-//     return result;
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
+static async getmyResource(topic){
+  try {
+    const result = await new Promise((resolve, reject) => {
+      db.query("SELECT * FROM `resources` WHERE `topic`=?", [topic], (error, result) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 
-// } 
+} 
 
 
-////// add resourse
+
 
 static async addResource(nresource_id,nresource_name, nresource_description,nprice,nquantity,nuid){
     try {
