@@ -1,0 +1,23 @@
+const jwt = require('jsonwebtoken');
+
+module.exports = (req, res, next) => {
+    const token = req.headers['authorization'];
+
+    if (!token) {
+        return res.status(403).json({ error: 'Token not provided' });
+    }
+
+    // Remove 'Bearer ' from the token string
+    const tokenString = token.replace('Bearer ', '');
+
+    jwt.verify(tokenString, 'your-secret-key', (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ error: 'Invalid token' });
+        }
+        // Attach decoded user information to the request object
+        req.userId = decoded.userId;
+        req.name = decoded.name;
+        req.email = decoded.email;
+        next();
+    });
+};

@@ -1,19 +1,26 @@
-const express=require('express')
-const mydb=require('./Config/DB.JS')
-const app=express();
-const rout=require("./Routes/route.js")
-// const suppliesRouter = require('./Routes/suppliesRouter');
-
-const bodyparser=require("body-parser")
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded({extended:true}))
-app.use(rout)
-
-app.use('/supplies', rout
-);
 
 
-app.listen(3000,()=>{
-    console.log('server is running');
 
-})
+const express = require('express');
+const bodyParser = require('body-parser');
+const authRoutes = require('./Routes/authRoutes');
+const PORT = process.env.PORT || 8000;
+const app = express();
+
+// Connect to database
+const db = require('./Config/DB');
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// Routes
+app.use('/api', authRoutes);
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+
