@@ -15,45 +15,6 @@ class Resourcescontroller{
     }
 
 
-    // static async addnewResource(req,res)
-    // {
-    //     console.log("add a new Resource")
-       
-       
-    //      var x=await resourceModel.addResource(req.body.resource_id, req.body.resource_name,  req.body.resource_description, req.body.price, req.body.quantity, req.body.uid)
-    //      if(x==true)
-    //        res.send("added successfully");
-    //      else
-    //      {
-    //        res.send ("add failed") 
-      
-    //      } 
-
-    // }
-
-
-    
-    // static async addnewResource(req,res){
-
-  
-    //   var resource_id= req.body.resource_id
-    //   var resource_name =req.body.resource_name 
-    //   var resource_description =req.body.resource_description
-    //   var price = req.body.price
-    //   var quantity= req.body.quantity
-    //   var uid= req.body.uid
-
-    //   var x=await resourceModel.addResource(resource_id,resource_name,resource_description,price,quantity,uid)
-    //         if(x==true)  
-    //         res.send("added succefully")
-    //       else  res.send("add failed")
-    //       if(results) {
-    //        res.send(results)
-    //        } 
-    //   }
-
-
-///run
 
       static async addnewResource(req,res)
       {
@@ -75,11 +36,7 @@ class Resourcescontroller{
     {
       const resid=req.body.resource_id;
      
-      // const resname=req.body.resource_name;
-      // const resdes= req.body.resource_description;
-      // const resprice=  req.body.price;
-      // const resquan=   req.body.quantity;
-      // const userid=   req.body.uid;
+   ;
 
 
 
